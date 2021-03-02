@@ -8,6 +8,15 @@
     <artifactId>bookstore-profitcore</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <!-- 继承说明：这里继承Spring Boot提供的父工程 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.2.RELEASE</version>
+        <relativePath/>
+    </parent>
+
     <modules>
         <module>app/biz</module>
         <module>app/common</module>
@@ -15,6 +24,7 @@
         <module>app/facade</module>
         <module>app/facade-impl</module>
         <module>app/integration</module>
+        <module>app/web</module>
     </modules>
 
 
