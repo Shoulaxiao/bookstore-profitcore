@@ -4,7 +4,10 @@ import com.shoulaxiao.client.AbstractHttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
+import javax.annotation.Resource;
 
 /**
  * @Author shoulaxiao
@@ -14,8 +17,7 @@ import org.springframework.web.client.RestTemplate;
  **/
 public class HttpRequestGetHandler extends AbstractHttpRequest {
 
-
-    @Autowired
+    @Resource
     private RestTemplate restTemplate;
 
     private final static Logger logger = LoggerFactory.getLogger(HttpRequestGetHandler.class);

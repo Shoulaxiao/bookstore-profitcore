@@ -1,4 +1,4 @@
-import {config} from "../config";
+import {config} from "../config/index";
 
 const tips = {
     1: '抱歉，出现了一个未知错误',
@@ -18,6 +18,7 @@ class Http {
         wx.request({
             url: config.aip_base_url + param.url,
             method: param.method,
+            data: param.data,
             header: {
                 'content-type': 'application/json',
                 'appkey': config.appkey,
