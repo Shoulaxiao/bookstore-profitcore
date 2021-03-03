@@ -7,6 +7,7 @@ import com.shoulaxiao.constant.Symbol;
 import com.shoulaxiao.constant.WeChatConstant;
 import com.shoulaxiao.controller.utils.WeiXinUtil;
 import com.shoulaxiao.model.WeChatAuthorResponse;
+import com.shoulaxiao.model.response.SingleResult;
 import com.shoulaxiao.util.redis.RedisClient;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -36,7 +37,7 @@ public class WeixinController {
     private RedisClient redisClient;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(HttpServletRequest request, HttpServletResponse response) {
+    public SingleResult login(HttpServletRequest request, HttpServletResponse response) {
         try {
             String code = request.getParameter("code");
             AbstractHttpRequest httpHandler = new HttpRequestGetHandler();
@@ -48,8 +49,6 @@ public class WeixinController {
             if (token == null) {
                 String res = httpHandler.doSend(url, "");
                 WeChatAuthorResponse weChatAuthorResponse = parseResult(res);
-                //获取用户详情
-
 
                 //保存Redis
                 redisClient.set(WeChatConstant.LOGIN_REQ_HEADER + weChatAuthorResponse.getOpenid() + Symbol.UNDER_LINE + weChatAuthorResponse.getSessionKey(), "");
