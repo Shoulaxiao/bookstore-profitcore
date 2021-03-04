@@ -16,6 +16,9 @@ public class WeChatConstant {
     public static final String  APP_SECRET="9941941f6ad0c8fa45a1f104646ab55e";
     /**登录请求前缀*/
     public static final String LOGIN_REQ_HEADER="WX-Access-Token";
+    /**用户登录session过期时间*/
+    public static final long LOGIN_REQ_HEADER_EXPIRE_TIME = 3 * 24 * 60 * 60;
+
 
 
 }

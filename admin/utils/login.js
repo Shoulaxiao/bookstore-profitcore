@@ -3,7 +3,6 @@ let http=new Http();
 //用户登录
 function userLogin() {
    wx.checkSession({
-
        success:(res)=>{
            //登录状态
        },
@@ -81,4 +80,7 @@ function saveUserInfoToServer(userInfo) {
             })
         }
     })
+}
+function userAccess(){
+
 }

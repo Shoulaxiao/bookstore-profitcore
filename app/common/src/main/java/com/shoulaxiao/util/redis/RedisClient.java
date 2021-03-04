@@ -35,7 +35,7 @@ public class RedisClient {
      */
     public void removePattern(final String pattern) {
         Set<Serializable> keys = redisTemplate.keys(pattern);
-        if (keys.size() > 0){
+        if (keys.size() > 0) {
             redisTemplate.delete(keys);
         }
     }
@@ -102,7 +102,7 @@ public class RedisClient {
      * @param value
      * @return
      */
-    public boolean set(final String key, Object value, Long expireTime) {
+    public boolean setValue(final String key, Object value, Long expireTime) {
         boolean result = false;
         try {
             ValueOperations<Serializable, Object> operations = redisTemplate
