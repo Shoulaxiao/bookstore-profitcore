@@ -1,12 +1,11 @@
-// pages/test/index.js
+// pages/catalog/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-     userName:'爱吃代码的学习',
-     avatarUrl:'../../image/20210304230950.jpg'
+
   },
 
   /**

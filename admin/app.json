@@ -1,8 +1,11 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/user/user",
-    "pages/logs/logs"
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/catalog/index",
+    "pages/shop/index",
+    "pages/test/index"
   ],
   "tabBar": {
     "custom": true,
@@ -15,7 +18,19 @@
         "pagePath": "pages/index/index",
         "iconPath": "image/icon_component.png",
         "selectedIconPath": "image/icon_component_HL.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/catalog/index",
+        "iconPath": "image/icon_component.png",
+        "selectedIconPath": "image/icon_component_HL.png",
         "text": "分类"
+      },
+      {
+        "pagePath": "pages/shop/index",
+        "iconPath": "/image/shop_gray.png",
+        "selectedIconPath": "/image/shop_green.png",
+        "text": "购物车"
       },
       {
         "pagePath": "pages/user/user",
