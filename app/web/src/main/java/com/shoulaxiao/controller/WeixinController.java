@@ -1,9 +1,9 @@
 package com.shoulaxiao.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.shoulaxiao.client.AbstractHttpRequest;
 import com.shoulaxiao.client.method.HttpRequestGetHandler;
-import com.shoulaxiao.constant.Symbol;
 import com.shoulaxiao.constant.WeChatConstant;
 import com.shoulaxiao.controller.utils.WeiXinUtil;
 import com.shoulaxiao.enums.WeChatResEnum;
@@ -11,7 +11,6 @@ import com.shoulaxiao.model.WeChatAuthorResponse;
 import com.shoulaxiao.model.response.SingleResult;
 import com.shoulaxiao.model.user.UserInfo;
 import com.shoulaxiao.util.redis.RedisClient;
-import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,14 +85,14 @@ public class WeixinController {
 
     private WeChatAuthorResponse parseResult(String res) {
         WeChatAuthorResponse weChatAuthorResponse = new WeChatAuthorResponse();
-        JSONObject jsonObject = JSONObject.fromObject(res);
+        JSONObject jsonObject = JSONObject.parseObject(res);
         if (jsonObject != null) {
-            if (0 != jsonObject.getInt("errcode")) {
-                logger.error("获取auth.code2Session失败,errcode={},errmsg={}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
+            if (0 != jsonObject.getInteger("errcode")) {
+                logger.error("获取auth.code2Session失败,errcode={},errmsg={}", jsonObject.getInteger("errcode"), jsonObject.getString("errmsg"));
                 weChatAuthorResponse.setOpenid(jsonObject.getString("openid"));
                 weChatAuthorResponse.setSessionKey(jsonObject.getString("session_key"));
                 weChatAuthorResponse.setUnionId(jsonObject.getString("unionid"));
-                weChatAuthorResponse.setErrCode(jsonObject.getInt("errcode"));
+                weChatAuthorResponse.setErrCode(jsonObject.getInteger("errcode"));
                 weChatAuthorResponse.setErrMsg(jsonObject.getString("errmsg"));
             }
         }

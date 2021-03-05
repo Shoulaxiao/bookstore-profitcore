@@ -82,7 +82,7 @@ public class RedisClient {
      * @param value
      * @return
      */
-    public boolean set(final String key, Object value) {
+    public boolean setValue(final String key, Object value) {
         boolean result = false;
         try {
             ValueOperations<Serializable, Object> operations = redisTemplate

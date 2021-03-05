@@ -53,7 +53,7 @@ public class MethodCacheInterceptor implements MethodInterceptor {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        redisClient.set(tkey, tvalue, Long.parseLong(defaultCacheExpireTime));
+                        redisClient.setValue(tkey, tvalue, Long.parseLong(defaultCacheExpireTime));
                     }
                 }).start();
             }
