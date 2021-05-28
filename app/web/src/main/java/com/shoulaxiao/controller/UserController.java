@@ -2,7 +2,6 @@ package com.shoulaxiao.controller;
 
 import com.shoulaxiao.model.request.UserDTO;
 import com.shoulaxiao.model.response.SingleResult;
-import com.shoulaxiao.model.user.UserInfo;
 import com.shoulaxiao.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -28,10 +27,7 @@ public class UserController {
     }
 
     private boolean validateUserInfo(UserDTO userDTO) {
-        if (StringUtils.isEmpty(userDTO.getWxId())){
-            return false;
-        }
-        return true;
+        return !StringUtils.isEmpty(userDTO.getWxId());
     }
 
 }

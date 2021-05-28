@@ -8,6 +8,10 @@ package com.shoulaxiao.constant;
  **/
 public class WeChatConstant {
 
+    /**获取accesstoken链接**/
+    public static final String ACCESS_TOKEN_URL="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${APPID}&secret=${APPSECRE}";
+    /**获取用户信息接口**/
+    public static final String GET_USER_INFO_URL = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN";
     /**auth.code2Session URL链接*/
     public static String CODE2_SESSION_URL="https://api.weixin.qq.com/sns/jscode2session?appid=${APPID}&secret=${SECRET}&js_code=${JSCODE}&grant_type=authorization_code";
     /** 小程序的APPID*/

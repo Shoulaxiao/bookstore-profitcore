@@ -1,19 +1,18 @@
 package com.shoulaxiao.service.impl;
 
 import com.shoulaxiao.biz.mapper.UserMapperConverter;
+import com.shoulaxiao.constant.WeChatConstant;
 import com.shoulaxiao.dao.UserDOMapper;
 import com.shoulaxiao.entity.UserDO;
 import com.shoulaxiao.entity.UserDOExample;
 import com.shoulaxiao.model.request.UserDTO;
 import com.shoulaxiao.service.UserService;
 import org.apache.commons.collections.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.util.locale.LocaleUtils;
 
-import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * @Author: shoulaxiao
@@ -23,10 +22,10 @@ import java.util.Locale;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Resource
+    @Autowired
     private UserDOMapper userDOMapper;
 
-    @Resource
+    @Autowired
     private UserMapperConverter userMapperConverter;
 
     @Override
@@ -45,5 +44,11 @@ public class UserServiceImpl implements UserService {
             return (long) userDOMapper.insert(userMapperConverter.dto2do(userDTO));
         }
         return userDOS.get(0).getId();
+    }
+
+    @Override
+    public boolean getUserInfoAndSave(String openId) {
+        String url = WeChatConstant.GET_USER_INFO_URL;
+        return false;
     }
 }

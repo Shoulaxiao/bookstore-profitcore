@@ -10,6 +10,7 @@ import com.shoulaxiao.enums.WeChatResEnum;
 import com.shoulaxiao.model.WeChatAuthorResponse;
 import com.shoulaxiao.model.response.SingleResult;
 import com.shoulaxiao.model.user.UserInfo;
+import com.shoulaxiao.service.UserService;
 import com.shoulaxiao.util.redis.RedisClient;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -40,6 +41,9 @@ public class WeixinController {
     @Resource
     private RedisClient redisClient;
 
+    @Resource
+    private UserService userService;
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public SingleResult login(HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -60,6 +64,9 @@ public class WeixinController {
                     BeanUtils.copyProperties(response, userInfo);
                     //保存用户的信息
                     redisClient.setValue(WeChatConstant.LOGIN_REQ_HEADER + newToken, JSON.toJSONString(userInfo), WeChatConstant.LOGIN_REQ_HEADER_EXPIRE_TIME);
+                    //获取用户详细信息，存储到数据库
+                    userService.getUserInfoAndSave(userInfo.getOpenId());
+
                     Cookie cookie = new Cookie(WeChatConstant.LOGIN_REQ_HEADER, newToken);
                     cookie.setMaxAge(24 * 60 * 60);
                     cookie.setPath("/");

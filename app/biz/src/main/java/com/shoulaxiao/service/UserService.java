@@ -17,4 +17,12 @@ public interface UserService {
      */
     Long saveUser(UserDTO userDTO);
 
+
+    /**
+     * 获取用户信息并且保存数据库
+     * @param openId 个人微信openID
+     * @return 成功/失败
+     */
+    boolean getUserInfoAndSave(String openId);
+
 }
